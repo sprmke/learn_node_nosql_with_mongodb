@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 
 const errorController = require('./controllers/error');
 
-const mongoConnect = require('./util/database');
+const { mongoConnect } = require('./util/database');
 
 dotenv.config();
 
@@ -29,6 +29,7 @@ app.use((req, res, next) => {
   //     next();
   //   })
   //   .catch(err => console.log(err));
+  next();
 });
 
 app.use('/admin', adminRoutes);
