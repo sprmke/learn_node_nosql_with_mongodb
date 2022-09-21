@@ -15,12 +15,12 @@ class Product {
     let dbOp;
     if (this._id) {
       // Update product
-      dbOp
+      dbOp = db
         .collection('products')
         .updateOne({ _id: new ObjectId(this._id) }, { $set: this });
     } else {
       // Create new product
-      dbOp.collection('products').insertOne(this);
+      dbOp = db.collection('products').insertOne(this);
     }
 
     return dbOp
