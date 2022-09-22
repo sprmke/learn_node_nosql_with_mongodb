@@ -24,13 +24,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
+  // Temporary do this:
+  // to save this userId on products collection
   User.findById('632bef750415689a6e4bbf06')
     .then((user) => {
       req.user = user;
       next();
     })
     .catch((err) => console.log(err));
-  next();
 });
 
 app.use('/admin', adminRoutes);
