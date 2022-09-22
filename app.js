@@ -28,7 +28,8 @@ app.use((req, res, next) => {
   // to save this userId on products collection
   User.findById('632bef750415689a6e4bbf06')
     .then((user) => {
-      req.user = user;
+      const { name, email, cart, _id } = user;
+      req.user = new User(name, email, cart, _id);
       next();
     })
     .catch((err) => console.log(err));
