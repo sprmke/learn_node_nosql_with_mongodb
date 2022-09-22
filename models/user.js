@@ -16,7 +16,7 @@ class User {
 
   addToCart(product) {
     const cartProductIndex = this.cart.items.findIndex(
-      (cp) => cp.productId === product._id.toString()
+      (cp) => cp.productId.toString() === product._id.toString()
     );
 
     let newQuantity = 1;
