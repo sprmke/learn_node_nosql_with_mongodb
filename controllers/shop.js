@@ -62,7 +62,6 @@ exports.postCart = (req, res, next) => {
       return req.user.addToCart(product);
     })
     .then((result) => {
-      console.log(result);
       res.redirect('/cart');
     });
 };
@@ -72,7 +71,6 @@ exports.postCartDeleteProduct = (req, res, next) => {
   req.user
     .deleteItemFromCart(prodId)
     .then((result) => {
-      console.log(result);
       res.redirect('/cart');
     })
     .catch((err) => console.log(err));
