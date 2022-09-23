@@ -62,6 +62,18 @@ class Product {
     return db
       .collection('products')
       .deleteOne({ _id: new ObjectId(productId) })
+      .then((result) => {
+        // remove all instances of the deleted product
+        // on all users cart product list
+        return db.collection('users').updateMany(
+          {},
+          {
+            $pull: {
+              'cart.items': { productId: new ObjectId(productId) },
+            },
+          }
+        );
+      })
       .then((result) => console.log('Deleted'))
       .catch((error) => console.log(error));
   }

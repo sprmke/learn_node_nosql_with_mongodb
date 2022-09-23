@@ -84,8 +84,6 @@ class User {
       (cartItem) => cartItem.productId.toString() !== productId
     );
 
-    console.log('updatedCart::', updatedCart);
-
     return db
       .collection('users')
       .updateOne(
