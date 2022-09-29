@@ -24,8 +24,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-  // Temporary do this:
-  // to save this userId on products collection
+  // Save this user on request to be used acrooss the app
   User.findById('632bef750415689a6e4bbf06')
     .then((user) => {
       const { name, email, cart, _id } = user;
